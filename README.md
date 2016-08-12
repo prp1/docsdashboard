@@ -22,6 +22,7 @@ npm start
 
 # use Hot Module Replacement
 npm run server:dev:hmr
+```
 
 Go to [http://localhost:3000](http://localhost:3000)
 
