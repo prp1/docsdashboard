@@ -5,10 +5,23 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var routes = require('./routes');
 var app = express();
-var http = require('http').Server(app);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-http.listen('3001', function() {
-  console.log('%s listening at %s', http.name, http.url);
+io.on('connection', function(client){ 
+    console.log(555)
+
+    socket.on('event', function(data){
+        console.log(666)
+    });
+
+    socket.on('disconnect', function(){
+        console.log('disconnect')
+    });
+});
+
+server.listen('3001', function() {
+  console.log('%s listening at %s', server.name, server.url);
 });
 
 app.use(function(req, res, next) {
@@ -39,4 +52,3 @@ app.use(function(err, req, res, next) {
         error: err
     });
 });
-

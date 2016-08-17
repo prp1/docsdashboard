@@ -5,6 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
 import { Nav } from './nav';
+// import { io } from 'socket.io-client';
 
 @Component({
   selector: 'app',
@@ -42,6 +43,18 @@ export class App {
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
+
+    // var socket = new io.Socket('localhost',{
+    //   port: 8080
+    // });
+    // socket.connect(); 
+
+    // // Add a connect listener
+    // socket.on('connect',function() {
+    //   console.log('Client has connected to the server!');
+    // });    
+
+
   }
 
 }
