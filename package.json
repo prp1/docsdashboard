@@ -87,6 +87,7 @@
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.29",
     "angular2-hmr": "~0.8.0",
+    "angular2-websocket": "^0.6.3",
     "awesome-typescript-loader": "1.1.1",
     "body-parser": "^1.15.2",
     "codelyzer": "~0.0.21",

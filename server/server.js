@@ -8,11 +8,14 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-io.on('connection', function(client){ 
-    console.log(555)
+io.on('connection', function(socket){ 
+    console.log('a user connected')
+
+    socket.emit('news', { hello: 'world' });
 
     socket.on('event', function(data){
         console.log(666)
+        console.log(data)
     });
 
     socket.on('disconnect', function(){

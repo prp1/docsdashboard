@@ -6,6 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { AppState } from './app.service';
 import { Nav } from './nav';
 // import { io } from 'socket.io-client';
+// import { $WebSocket } from 'angular2-websocket/angular2-websocket'
 
 @Component({
   selector: 'app',
@@ -54,7 +55,33 @@ export class App {
     //   console.log('Client has connected to the server!');
     // });    
 
+    // let webSocket = new $WebSocket('ws://localhost:3000/');
 
+    // webSocket.send('hello')
+
+    // var socket = io();
+
+
+    var head = document.getElementsByTagName("head")[0];
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    js.src = 'https://cdn.socket.io/socket.io-1.4.5.js';
+    head.appendChild(js);
+
+    setTimeout(() => {
+      var socket = io();
+
+     // var socket = io.connect('http://localhost:3001');
+      socket.connect('http://localhost:3001');
+
+    socket.on('news', function (data) {
+      console.log('response from server');
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    })
+
+    }, 1000);
+    
   }
 
 }
