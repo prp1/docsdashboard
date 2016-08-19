@@ -3,23 +3,22 @@ var path = require('path');
 var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var router = express.Router();
+
 
 io.on('connection', function(socket){ 
-    console.log('a user connected')
+    console.log('io: a user connected')
 
-    socket.emit('news', { hello: 'world' });
-
-    socket.on('event', function(data){
-        console.log(666)
-        console.log(data)
+    router.post('/api/newFeed', function(req, res, next) {
+        socket.emit('newFeed', req);
+        res.json({});
     });
 
     socket.on('disconnect', function(){
-        console.log('disconnect')
+        console.log('io: a user disconnected')
     });
 });
 
@@ -39,7 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(cookieParser());
 
-app.use('/', routes);
+app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

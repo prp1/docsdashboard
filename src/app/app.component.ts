@@ -45,43 +45,12 @@ export class App {
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
 
-    // var socket = new io.Socket('localhost',{
-    //   port: 8080
-    // });
-    // socket.connect(); 
+    var socket = io('http://localhost:3001');
 
-    // // Add a connect listener
-    // socket.on('connect',function() {
-    //   console.log('Client has connected to the server!');
-    // });    
-
-    // let webSocket = new $WebSocket('ws://localhost:3000/');
-
-    // webSocket.send('hello')
-
-    // var socket = io();
-
-
-    var head = document.getElementsByTagName("head")[0];
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    js.src = 'https://cdn.socket.io/socket.io-1.4.5.js';
-    head.appendChild(js);
-
-    setTimeout(() => {
-      var socket = io();
-
-     // var socket = io.connect('http://localhost:3001');
-      socket.connect('http://localhost:3001');
-
-    socket.on('news', function (data) {
-      console.log('response from server');
-      console.log(data);
-      socket.emit('my other event', { my: 'data' });
+    socket.on('newFeed', function (data) {
+        console.log('data');
     })
 
-    }, 1000);
-    
   }
 
 }
