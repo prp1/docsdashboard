@@ -12,10 +12,21 @@ var router = express.Router();
 io.on('connection', function(socket){ 
     console.log('io: a user connected')
 
-    router.post('/api/newFeed', function(req, res, next) {
-        socket.emit('newFeed', req);
-        res.json({});
-    });
+    // router.post('/api/newFeed', function(req, res, next) {
+    //     socket.emit('newFeed', req);
+    //     res.json({});
+    // });
+
+    let i = 0;
+
+    setInterval(() => {
+        i++;
+        let newsFeed = {
+            title: 'Someone commited ' + i,
+            description: 'Refactored some component'
+        }
+        socket.emit('newsFeed', newsFeed);
+    }, 3000);
 
     socket.on('disconnect', function(){
         console.log('io: a user disconnected')

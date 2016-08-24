@@ -16,4 +16,12 @@ export class NewsFeedContainer {
     { title: 'Tomas commited', description: 'Added migrations' }
   ];  
 
+  ngOnInit() {
+        var socket = io('http://localhost:3001');
+
+        socket.on('newsFeed', (newItem) => {
+            this.items.unshift(newItem);
+        })
+  }
+
 }

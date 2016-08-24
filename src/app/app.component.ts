@@ -36,15 +36,8 @@ export class App {
 
   }
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-
-    var socket = io('http://localhost:3001');
-
-    socket.on('newFeed', function (data) {
-        console.log('data');
-    })
-
-  }
+  // ngOnInit() {
+  //   console.log('Initial App State', this.appState.state);
+  // }
 
 }
