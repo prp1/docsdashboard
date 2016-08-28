@@ -1,6 +1,7 @@
 import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { RouterConfig } from '@angular/router';
 import { Home } from './home';
+import { PlaygroundComponent } from './playground';
 import { NoContent } from './no-content';
 import { DataResolver } from './app.resolver';
 
@@ -9,12 +10,6 @@ export const routes: RouterConfig = [
     path: '',      
     component: Home },
   // make sure you match the component type string to the require in asyncRoutes
-  { 
-    path: 'about', 
-    component: 'About',
-    resolve: {
-      'yourData': DataResolver
-    }},
   // async components with children routes must use WebpackAsyncRoute
   { 
     path: 'detail', 
@@ -24,6 +19,13 @@ export const routes: RouterConfig = [
       { path: '', component: 'Index' }  // must be included
     ]
   },
+  { 
+    path: 'playground', 
+    component: PlaygroundComponent
+    // resolve: {
+    //   'yourData': DataResolver
+    // }
+  },  
   { 
     path: '**',    
     component: NoContent 
@@ -45,7 +47,7 @@ export const asyncRoutes: AsyncRoutes = {
 // Optimizations for initial loads
 // An array of callbacks to be invoked after bootstrap to prefetch async routes
 export const prefetchRouteCallbacks: Array<IdleCallbacks> = [
-  asyncRoutes['About'],
+  //asyncRoutes['About'],
   asyncRoutes['Detail'],
    // es6-promise-loader returns a function
 ];
