@@ -17,12 +17,14 @@ npm install --global karma-cli
 npm install --global protractor
 npm install --global typescript
 
-# start the server
+# start server
 npm start
 
-# use Hot Module Replacement
-npm run server:dev:hmr
-```
+# start server using hot module replacement
+npm run hot
+
+# start api server
+npm run api
 
 Go to [http://localhost:3000](http://localhost:3000)
 

@@ -54,7 +54,9 @@
     "start:hmr": "npm run server:dev:hmr",
     "preversion": "npm test",
     "version": "npm run build",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "hot": "npm run server:dev:hmr",
+    "api": "node server/server.js"
   },
   "dependencies": {
     "@angular/http": "2.0.0-rc.4",
