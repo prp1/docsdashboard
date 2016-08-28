@@ -1,26 +1,38 @@
 import { Component } from '@angular/core'
-import { NewsFeedItem } from '../newsFeedItem'
+import { Store } from '@ngrx/store';
+
+import { NewsFeedItem } from '../'
+import { NewsFeedItema } from '../';
 
 @Component({
   selector: 'dd-news-feed-container',
   templateUrl: 'newsFeedContainer.template.html',
   directives: [
-    NewsFeedItem
+    //NewsFeedItem
   ]  
 })
 
 export class NewsFeedContainer {
 
-  public items = [
-    { title: 'Paulius commited', description: 'Refactored file upload' },
-    { title: 'Tomas commited', description: 'Added migrations' }
+  public items: NewsFeedItema[] = [
+
   ];  
+
+  constructor(private store: Store<any>){
+    store.select('newsFeedReducer')
+      .subscribe((items: NewsFeedItema[]) => {
+        this.items = items;
+      })
+  }
 
   ngOnInit() {
         var socket = io('http://localhost:3001');
 
         socket.on('newsFeed', (newItem) => {
-            this.items.unshift(newItem);
+          this.store.dispatch({
+            type: 'ADD_NEWS_FEED_ITEM',
+            payload: newItem
+          })
         })
   }
 

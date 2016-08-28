@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NewsFeedContainer } from '../newsFeed/newsFeedContainer';
-
-import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
+
+import { AppState } from '../app.service';
+import { NewsFeedContainer } from '../newsFeed';
 
 @Component({
   // The selector is what angular internally uses

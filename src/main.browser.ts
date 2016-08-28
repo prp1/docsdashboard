@@ -1,20 +1,10 @@
-/*
- * Providers provided by Angular
- */
 import { bootstrap } from '@angular/platform-browser-dynamic';
-/*
-* Platform and Environment
-* our providers/directives/pipes
-*/
 import { PLATFORM_PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment';
+import { provideStore } from '@ngrx/store'
 
-
-/*
-* App Component
-* our top level component that holds all of our components
-*/
 import { App, APP_PROVIDERS } from './app';
+import { newsFeedReducer } from './app/newsFeed';
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -27,15 +17,21 @@ export function main(initialHmrState?: any): Promise<any> {
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
+    provideStore(
+      { 
+        newsFeedReducer: newsFeedReducer 
+      },
+      { 
+        newsFeedReducer: [    
+            { title: 'Paulius commited', description: 'Refactored file upload' },
+            { title: 'Tomas commited', description: 'Added migrations' }
+        ] 
+      }
+    )
   ])
   .then(decorateComponentRef)
   .catch(err => console.error(err));
-
 }
-
-
-
-
 
 /*
  * Vendors
