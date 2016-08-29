@@ -53,6 +53,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', router);
 
+app.get('/api/newsfeed', function (req, res) {
+
+    let demoFeeds = [
+        { title: 'Paulius1 commited', description: 'Refactored file upload' },
+        { title: 'Tomas1 commited', description: 'Added migrations' }        
+    ]
+
+  res.json({
+    data: demoFeeds  
+    });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
