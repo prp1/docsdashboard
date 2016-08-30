@@ -1,5 +1,5 @@
 import { ActionReducer, Action } from '@ngrx/store'
-import { NewsFeedItema } from '../'
+import { NewsFeedItema, NewsFeedActions } from '../'
 
 export const ADD_NEWS_FEED_ITEM = 'ADD_NEWS_FEED_ITEM'
 
@@ -8,7 +8,7 @@ export const newsFeedReducer: ActionReducer<NewsFeedItema[]> = (
     action: Action) => {
         
     switch (action.type) {
-        case 'ADD_NEWS_FEED_ITEM':
+        case NewsFeedActions.ADD_NEWS_FEED:
             return [
                 action.payload,
                 ...state
