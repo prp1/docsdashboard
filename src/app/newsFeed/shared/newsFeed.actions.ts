@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
-// import { Action } from '@ngrx/store'
+import { Action } from '@ngrx/store'
 
-// import { NewsFeedItema } from '../'
+import { NewsFeedItema } from '../'
 
 @Injectable()
 export class NewsFeedActions {
@@ -10,19 +10,19 @@ export class NewsFeedActions {
 
   }
 
-  // static GET_NEWS_FEEDS = 'GET_NEWS_FEEDS';
-  // getAll(): Action {
-  //   return {
-  //     type: NewsFeedActions.GET_NEWS_FEEDS
-  //   }
-  // }
+  static GET_NEWS_FEEDS = 'GET_NEWS_FEEDS';
+  getAll(): Action {
+    return {
+      type: NewsFeedActions.GET_NEWS_FEEDS
+    }
+  }
 
-  // static ADD_NEWS_FEED = 'ADD_NEWS_FEED';
-  // add(item: NewsFeedItema): Action {
-  //   return {
-  //     type: NewsFeedActions.ADD_NEWS_FEED,
-  //     payload: item
-  //   }
-  // }
+  static ADD_NEWS_FEED = 'ADD_NEWS_FEED';
+  add(item: NewsFeedItema): Action {
+    return {
+      type: NewsFeedActions.ADD_NEWS_FEED,
+      payload: item
+    }
+  }
 
 }

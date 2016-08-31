@@ -7,11 +7,11 @@ import { Store } from '@ngrx/store'
 import {
    NewsFeedListComponent, 
    NewsFeedItem, 
-   NewsFeedItema, 
-   NewsFeedActions
+   NewsFeedItema 
 } from '../'
 
-import { AppState } from '../../app.service'
+// does not work if imported from '../'
+import { NewsFeedActions } from '../shared/newsFeed.actions'
 
 @Component({
   selector: 'dd-news-feed-container',
@@ -20,28 +20,27 @@ import { AppState } from '../../app.service'
     //NewsFeedListComponent
   ],
   providers: [
-   // NewsFeedActions
+    NewsFeedActions
   ]
 })
 
 export class NewsFeedContainer {
 
-  public items = []; 
+  public items; 
 
   constructor(
     private store: Store<any>,
     private http: Http,
-    private newsFeedActions: NewsFeedActions,
-    private appState: AppState
+    private newsFeedActions: NewsFeedActions
     ){
 
       // this.items = store.select('newsFeedReducer')
 
       // without async pipe would be:
-    store.select('newsFeedReducer')
-      .subscribe((items: NewsFeedItema[]) => {
-       // this.items = items;
-      })  
+      store.select('newsFeedReducer')
+        .subscribe((items: NewsFeedItema[]) => {
+         // this.items = items;
+        })  
   }
 
   ngOnInit() {
@@ -49,6 +48,9 @@ export class NewsFeedContainer {
     // this.store.dispatch({
     //   type: 'GET_NEWS_FEEDS'
     // })    
+
+    // this.newsFeedActions.getAll();
+
 
     // this.getNewsFeeds()
     //   .subscribe((response: any) => {
