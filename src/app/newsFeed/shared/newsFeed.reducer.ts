@@ -36,7 +36,7 @@ console.log('smth')
             })
 
         case NewsFeedActions.LOADED_LAST_FEEDS:
-        console.log(777)
+            console.log(777)
             return Object.assign({}, state, {
                 isLoading: false,
                 feeds: action.payload

@@ -28,7 +28,7 @@ io.on('connection', function(socket){
             description: 'Refactored some component'
         }
         socket.emit('newsFeed', newsFeed);
-    }, 3000);
+    }, 6000);
 
     socket.on('disconnect', function(){
         console.log('io: a user disconnected')

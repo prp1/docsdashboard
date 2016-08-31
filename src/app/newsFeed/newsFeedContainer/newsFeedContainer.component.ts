@@ -28,16 +28,18 @@ import { NewsFeedsState } from '../shared/newsFeed.reducer'
 
 export class NewsFeedContainer {
 
-  public state; 
-  public isLoading;
-  private newsFeedStore; 
+  public isLoading$;
+  public items$;
+  private state$; 
 
   constructor(
     private store: Store<any>,
     private http: Http,
     private newsFeedActions: NewsFeedActions
     ){
-          this.state = store.select('newsFeedReducer')
+          this.state$ = store.select('newsFeedReducer')
+          this.items$ = this.state$.map(s => s.feeds)
+          this.isLoading$ = this.state$.map(s => s.isLoading)
   }
 
   ngOnInit() {
