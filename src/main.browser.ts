@@ -22,10 +22,13 @@ export function main(initialHmrState?: any): Promise<any> {
         newsFeedReducer: newsFeedReducer 
       },
       { 
-        newsFeedReducer: [    
-            { title: 'Paulius commited', description: 'Refactored file upload' },
-            { title: 'Tomas commited', description: 'Added migrations' }
-        ] 
+        newsFeedReducer: {
+          isLoading: false,
+          feeds: [    
+              { title: 'Paulius commited', description: 'Refactored file upload' },
+              { title: 'Tomas commited', description: 'Added migrations' }
+          ] 
+        }
       }
     )
   ])

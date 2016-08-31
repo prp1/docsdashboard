@@ -13,6 +13,7 @@ import {
 // does not work if imported from '../'
 import { NewsFeedActions } from '../shared/newsFeed.actions'
 import { NewsFeedListComponent } from '../newsFeedList/newsFeedList.component'
+import { NewsFeedsState } from '../shared/newsFeed.reducer'
 
 @Component({
   selector: 'dd-news-feed-container',
@@ -27,51 +28,64 @@ import { NewsFeedListComponent } from '../newsFeedList/newsFeedList.component'
 
 export class NewsFeedContainer {
 
-  public items; 
+  public state; 
+  public isLoading;
+  private newsFeedStore; 
 
   constructor(
     private store: Store<any>,
     private http: Http,
     private newsFeedActions: NewsFeedActions
     ){
-
-      // this.items = store.select('newsFeedReducer')
-
-      // without async pipe would be:
-      store.select('newsFeedReducer')
-        .subscribe((items: NewsFeedItema[]) => {
-          this.items = items;
-        })  
+          this.state = store.select('newsFeedReducer')
   }
 
   ngOnInit() {
-
-    // this.store.dispatch({
-    //   type: 'GET_NEWS_FEEDS'
-    // })    
-
-    // this.newsFeedActions.loadAll();
-
-
-    // this.getNewsFeeds()
-    //   .subscribe((response: any) => {
-    //     this.items = response
-    //   })
-
-        var socket = io('http://localhost:3001');
+        var socket = io('http://localhost:3001')
 
         socket.on('newsFeed', (newItem) => {
-          // this.store.dispatch({
-          //   type: 'ADD_NEWS_FEED_ITEM',
-          //   payload: newItem
-          // })
-
-         // this.newsFeedActions.add(newItem)
-
-
+          var action = this.newsFeedActions.add(newItem)
+          this.store.dispatch(action)
         })
   }  
+
+  reloadLastFeeds() {
+    var action = this.newsFeedActions.loadLastFeeds()
+    this.store.dispatch(action)
+  }
 
 
 
 }
+
+
+      // with async pipe:
+      //  this.newsFeedStore = store.select('newsFeedReducer')
+       
+
+//  * 	constructor(state$: Observable<AppState>) {
+//  * 	  this.booksState$ = state$.let(getBooksState());
+//  * 	}
+
+          // this.items = store.select('newsFeedReducer').let(getFeedsState())
+
+
+          // this.items = store.select('newsFeedReducer', s => s.feeds)
+          // this.items = Observable.combineLatest(store.select('newsFeedReducer')).let(getFeedsState())
+          // this.isLoading = this.newsFeedStore.select((state: NewsFeedsState) => state.isLoading)
+
+
+      // without async pipe:
+      // store.select('newsFeedReducer')
+      //   .subscribe((state: NewsFeedsState) => {
+      //     console.log('changed satete')
+
+          
+
+      //     // this.isLoading = state.isLoading;
+
+
+
+      //     // this.items = this.newsFeedStore.map((state: NewsFeedsState) => state.feeds)
+      //     // this.isLoading = state.isLoading;
+      //   })           

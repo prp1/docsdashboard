@@ -10,10 +10,18 @@ export class NewsFeedActions {
 
   }
 
-  static GET_NEWS_FEEDS = 'GET_NEWS_FEEDS';
-  loadAll(): Action {
+  static LOAD_LAST_FEEDS = 'LOAD_LAST_FEEDS';
+  loadLastFeeds(): Action {
     return {
-      type: NewsFeedActions.GET_NEWS_FEEDS
+      type: NewsFeedActions.LOAD_LAST_FEEDS
+    }
+  }
+
+  static LOADED_LAST_FEEDS = 'LOADED_LAST_FEEDS';
+  loadedLastFeeds(items: NewsFeedItema[]): Action {
+    return {
+      type: NewsFeedActions.LOADED_LAST_FEEDS,
+      payload: items
     }
   }
 

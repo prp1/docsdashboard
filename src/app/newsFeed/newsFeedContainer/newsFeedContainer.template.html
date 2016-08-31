@@ -1,6 +1,8 @@
 <div>
     <h1>News feed</h1>
 
-    <!--<dd-news-feed-list [items]="items | async"></dd-news-feed-list>-->
-    <dd-news-feed-list [items]="items"></dd-news-feed-list>
+    <button type="button" (click)="reloadLastFeeds()">Reload last feeds</button>
+    <span [hidden]="!(state | async)?.isLoading">Loading feeds...</span>
+    <dd-news-feed-list [items]="(state | async)?.feeds"></dd-news-feed-list>
+    <!--<dd-news-feed-list [state]="state"></dd-news-feed-list>-->
 </div>
