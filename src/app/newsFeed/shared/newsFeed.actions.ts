@@ -11,7 +11,7 @@ export class NewsFeedActions {
   }
 
   static GET_NEWS_FEEDS = 'GET_NEWS_FEEDS';
-  getAll(): Action {
+  loadAll(): Action {
     return {
       type: NewsFeedActions.GET_NEWS_FEEDS
     }

@@ -5,19 +5,20 @@ import { Store } from '@ngrx/store'
 // import './rxjs-operators'
 
 import {
-   NewsFeedListComponent, 
+  //  NewsFeedListComponent, 
    NewsFeedItem, 
    NewsFeedItema 
 } from '../'
 
 // does not work if imported from '../'
 import { NewsFeedActions } from '../shared/newsFeed.actions'
+import { NewsFeedListComponent } from '../newsFeedList/newsFeedList.component'
 
 @Component({
   selector: 'dd-news-feed-container',
   templateUrl: 'newsFeedContainer.template.html',
   directives: [
-    //NewsFeedListComponent
+    NewsFeedListComponent
   ],
   providers: [
     NewsFeedActions
@@ -39,7 +40,7 @@ export class NewsFeedContainer {
       // without async pipe would be:
       store.select('newsFeedReducer')
         .subscribe((items: NewsFeedItema[]) => {
-         // this.items = items;
+          this.items = items;
         })  
   }
 
@@ -49,7 +50,7 @@ export class NewsFeedContainer {
     //   type: 'GET_NEWS_FEEDS'
     // })    
 
-    // this.newsFeedActions.getAll();
+    // this.newsFeedActions.loadAll();
 
 
     // this.getNewsFeeds()
