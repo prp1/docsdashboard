@@ -14,7 +14,7 @@ const defaultState: NewsFeedsState = {
 }
 
 export const newsFeedReducer: ActionReducer<NewsFeedsState> = (
-    state: defaultState, 
+    state = defaultState, 
     action: Action
     ) => {
 

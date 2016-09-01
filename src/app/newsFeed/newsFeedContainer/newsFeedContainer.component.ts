@@ -43,7 +43,7 @@ export class NewsFeedContainer {
   }
 
   ngOnInit() {
-        var socket = io('http://localhost:3001')
+        var socket = io()
 
         socket.on('newsFeed', (newItem) => {
           var action = this.newsFeedActions.add(newItem)

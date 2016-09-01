@@ -10,7 +10,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var router = express.Router();
 
-
 io.on('connection', function(socket){ 
     console.log('io: a user connected')
 
@@ -35,9 +34,7 @@ io.on('connection', function(socket){
     });
 });
 
-server.listen('3001', function() {
-  console.log('%s listening at %s', server.name, server.url);
-});
+app.use(express.static('dist'));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
@@ -60,8 +57,8 @@ app.get('/api/newsfeed', function (req, res) {
         { title: 'Tomas1 commited', description: 'Added migrations' }        
     ]
 
-  res.json({
-    data: demoFeeds  
+    res.json({
+        data: demoFeeds  
     });
 });
 
@@ -78,4 +75,8 @@ app.use(function(err, req, res, next) {
         message: err.message,
         error: err
     });
+});
+
+server.listen('3000', function() {
+  console.log('%s listening at %s', server.name, server.url);
 });
