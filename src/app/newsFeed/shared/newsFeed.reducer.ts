@@ -17,8 +17,6 @@ export const newsFeedReducer: ActionReducer<NewsFeedsState> = (
     state: defaultState, 
     action: Action
     ) => {
-        
-console.log('smth')
 
     switch (action.type) {
         case NewsFeedActions.ADD_NEWS_FEED:
@@ -35,8 +33,7 @@ console.log('smth')
                 isLoading: true
             })
 
-        case NewsFeedActions.LOADED_LAST_FEEDS:
-            console.log(777)
+        case NewsFeedActions.LOAD_LAST_FEEDS_SUCCESS:
             return Object.assign({}, state, {
                 isLoading: false,
                 feeds: action.payload

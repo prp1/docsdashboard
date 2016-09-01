@@ -20,6 +20,8 @@ export class NewsFeedDataService {
   } 
 
   getNewsFeeds(): Observable<NewsFeedItema[]> {
+      console.log('---------/////////////////////////////-------------------')
+      console.log('getting news feeds from server')
     return this.http.get('http://localhost:3001/api/newsfeed')
       .map(this.extractData)
       .catch(this.handleError) 

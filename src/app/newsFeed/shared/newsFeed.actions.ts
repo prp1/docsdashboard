@@ -17,10 +17,10 @@ export class NewsFeedActions {
     }
   }
 
-  static LOADED_LAST_FEEDS = 'LOADED_LAST_FEEDS';
-  loadedLastFeeds(items: NewsFeedItema[]): Action {
+  static LOAD_LAST_FEEDS_SUCCESS = 'LOAD_LAST_FEEDS_SUCCESS';
+  loadLastFeedsSuccess(items: NewsFeedItema[]): Action {
     return {
-      type: NewsFeedActions.LOADED_LAST_FEEDS,
+      type: NewsFeedActions.LOAD_LAST_FEEDS_SUCCESS,
       payload: items
     }
   }
