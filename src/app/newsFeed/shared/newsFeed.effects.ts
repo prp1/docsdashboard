@@ -12,8 +12,7 @@ export class NewsFeedEffects {
     ) {}
 
 @Effect() loadLastFeeds$ = this.update$
-    // .whenAction(this.newsFeedActions.LOAD_LAST_FEEDS)
-    .whenAction('LOAD_LAST_FEEDS')
+    .whenAction(NewsFeedActions.LOAD_LAST_FEEDS)
     .switchMap(() => this.newsFeedDataService.getNewsFeeds())
     .map(newsFeeds => this.newsFeedActions.loadLastFeedsSuccess(newsFeeds))
 }
