@@ -14,13 +14,28 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
 
+console.log('--------------------------------')
+console.log('--------------------------------')
+console.log('--------------------------------')
+console.log('--------------------------------')
+console.log(process.env.NODE_EN)
+console.log('---///-----------------------------')
+console.log(helpers.isWebpackDevServer())
+
+const docsDashBoardConfig = {
+    initialState: {},
+    // apiUrl: process.env.NODE_ENV === 'production' ? '/api/' : 'http://localhost:3001/api/'
+    apiUrl: helpers.isWebpackDevServer() ? 'http://localhost:3001/api/' : '/api/' 
+}
+
 /*
  * Webpack Constants
  */
 const METADATA = {
   title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
   baseUrl: '/',
-  isDevServer: helpers.isWebpackDevServer()
+  isDevServer: helpers.isWebpackDevServer(),
+  docsDashBoardConfig: JSON.stringify(docsDashBoardConfig)
 };
 
 /*
