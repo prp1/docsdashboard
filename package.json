@@ -52,7 +52,7 @@
     "docs": "npm run typedoc -- --options typedoc.json --exclude '**/*.spec.ts' ./src/",
     "start_old": "npm run server:dev",
     "start_old2": "set NODE_ENV=production & npm run build:dev & node server.js",
-    "postinstall": "npm install rimraf -g && set NODE_ENV=production & npm run build:dev",
+    "postinstall": "npm install rimraf -g & npm install webpack -g & set NODE_ENV=production & npm run build:dev",
     "start": "node server.js",
     "start:hmr": "npm run server:dev:hmr",
     "preversion": "npm test",
