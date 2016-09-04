@@ -53,7 +53,7 @@
     "start_old": "npm run server:dev",
     "start_old2": "set NODE_ENV=production & npm run build:dev & node server.js",
     "preinstall___": "rm -rf node_modules",
-    "postinstall": "npm install webpack-merge & npm install rimraf -g & npm install webpack -g & npm install webpack & set NODE_ENV=production & npm run build:dev",
+    "postinstall": "npm install webpack-merge & npm install rimraf -g & npm install webpack -g & npm install webpack & npm run build:dev",
     "start": "node server.js",
     "start:hmr": "npm run server:dev:hmr",
     "preversion": "npm test",
