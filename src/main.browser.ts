@@ -1,12 +1,15 @@
+import { provide } from '@angular/core'
 import { bootstrap } from '@angular/platform-browser-dynamic'
 import { PLATFORM_PROVIDERS } from './platform/browser'
 import { ENV_PROVIDERS, decorateComponentRef } from './platform/environment'
 import { provideStore } from '@ngrx/store'
 import { runEffects } from '@ngrx/effects'
 
-import { App, APP_PROVIDERS } from './app'
+import { App, APP_PROVIDERS, AppSettings } from './app'
 import { newsFeedReducer } from './app/newsFeed'
 import { NewsFeedEffects } from './app/newsFeed/shared/newsFeed.effects'
+
+
 
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
@@ -14,11 +17,14 @@ import { NewsFeedEffects } from './app/newsFeed/shared/newsFeed.effects'
  */
 export function main(initialHmrState?: any): Promise<any> {
 
+//  let appSettings = new AppSettings()
+
   return bootstrap(App, [
     // To add more vendor providers please look in the platform/ folder
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS,
+    //  provide('AppSettings', { useValue: appSettings }),
     provideStore(
       { 
         newsFeedReducer: newsFeedReducer 

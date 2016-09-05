@@ -6,7 +6,7 @@ import { NewsFeedActions, NewsFeedDataService } from '../'
 @Injectable()
 export class NewsFeedEffects {
     constructor (
-        private update$: StateUpdates<any>, // <AppState>
+        private update$: StateUpdates<any>, // <AppSt_ate>
         private newsFeedActions: NewsFeedActions,
         private newsFeedDataService: NewsFeedDataService
     ) {}

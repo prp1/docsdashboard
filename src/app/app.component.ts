@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AppState } from './app.service';
 import { Nav } from './nav';
 
 @Component({
@@ -21,8 +20,6 @@ import { Nav } from './nav';
     <footer style="margin-top: 50px;">
       &copy; TSDocs team
     </footer>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
   `
 })
 
@@ -31,13 +28,8 @@ export class App {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(
-    public appState: AppState) {
+  constructor() {
 
   }
-
-  // ngOnInit() {
-  //   console.log('Initial App State', this.appState.state);
-  // }
 
 }

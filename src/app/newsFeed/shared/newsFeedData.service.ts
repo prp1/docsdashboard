@@ -1,9 +1,10 @@
 import { Component } from '@angular/core'
 import { Http, Response } from '@angular/http'
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable }     from 'rxjs/Observable';
 import { Store } from '@ngrx/store'
 
+import { AppSettings } from '../../'
 import { NewsFeedItema } from '../'
 
 @Injectable()
@@ -12,17 +13,14 @@ export class NewsFeedDataService {
   constructor(
     private store: Store<any>,
     private http: Http
-    ){
-    // store.select('newsFeedReducer')
-    //   .subscribe((items: NewsFeedItema[]) => {
-    //     this.items = items;
-    //   })
-  } 
+    // neither of these work:
+    // private appSettings: AppSettings 
+    //@Inject('AppSettings') private appSettings: AppSettings
+    //  @Inject(AppSettings) appSettings: any
+    ){} 
 
   getNewsFeeds(): Observable<NewsFeedItema[]> {
-      console.log('---------/////////////////////////////-------------------')
-      console.log('getting news feeds from server')
-    return this.http.get('/api/newsfeed')
+    return this.http.get(`${(<any>window).docsDashBoardConfig.apiUrl}newsfeed`)
       .map(this.extractData)
       .catch(this.handleError) 
   }  

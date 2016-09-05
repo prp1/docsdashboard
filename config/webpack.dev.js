@@ -25,12 +25,19 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: HMR
 });
 
+const docsDashBoardConfig = {
+    initialState: {},
+    baseUrl: 'http://localhost:3001/',
+    apiUrl: 'http://localhost:3001/api/' 
+}
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge(commonConfig, {
+  docsDashBoardConfig: JSON.stringify(docsDashBoardConfig),
 
   /**
    * Merged metadata from webpack.common.js for index.html

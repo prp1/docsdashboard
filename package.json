@@ -60,7 +60,7 @@
     "version": "npm run build",
     "postversion": "git push && git push --tags",
     "hot": "npm run server:dev:hmr",
-    "api": "node server/server.js"
+    "api": "node server.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",

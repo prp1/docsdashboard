@@ -30,8 +30,15 @@ const METADATA = webpackMerge(commonConfig.metadata, {
   HMR: false
 });
 
-module.exports = webpackMerge(commonConfig, {
+const docsDashBoardConfig = {
+    initialState: {},
+    baseUrl: 'http://localhost:3001/',
+    apiUrl: '/api/' 
+}
 
+module.exports = webpackMerge(commonConfig, {
+  docsDashBoardConfig: JSON.stringify(docsDashBoardConfig),
+  
   /**
    * Switch loaders to debug mode.
    *

@@ -1,16 +1,13 @@
-// App
-export * from './app.component';
-export * from './app.service';
-export * from './app.routes';
+export * from './app.component'
+export * from './app.service'
+export * from './app.routes'
+export * from './app.settings'
 
-import { AppState } from './app.service';
+import { AppSettings } from './app.settings'
 import { NewsFeedActions } from './newsFeed/shared/newsFeed.actions'
 import { NewsFeedDataService } from './newsFeed/shared/newsFeedData.service'
-// import { AppState } from './app.service';
 
-// Application wide providers
 export const APP_PROVIDERS = [
-  AppState,
   NewsFeedActions,
   NewsFeedDataService
-];
+]

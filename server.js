@@ -9,8 +9,11 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var router = express.Router();
-const ENV = process.env.NODE_ENV;
-// isDevServer: helpers.isWebpackDevServer()
+let  ENV = null;
+
+if (process && process.env && process.env.NODE_ENV) {
+    ENV = process.env.NODE_ENV.toString().trim()
+}
 
 io.on('connection', function(socket){ 
     console.log('io: a user connected')
@@ -39,7 +42,6 @@ io.on('connection', function(socket){
 app.use(express.static('dist'));
 
 if (ENV !== 'production') {
-    
     app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -47,7 +49,6 @@ if (ENV !== 'production') {
     next();
     });
 }
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -83,7 +84,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var port = process.env.port || 1337;
+var port = process.env.port || 3001;
 
 server.listen(port, function() {
   console.log('listening at port ' + port);

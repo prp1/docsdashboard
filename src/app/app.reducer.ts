@@ -4,7 +4,7 @@ import { combineReducers } from '@ngrx/store';
 // import { newsFeedReducer }, * as fromNewsFeed from './newsFeed'
 import { newsFeedReducer, NewsFeedsState } from './newsFeed'
 
-export interface AppState {
+export interface App_State {
     newsFeeds: NewsFeedsState;
 }
 

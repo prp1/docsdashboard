@@ -43,12 +43,12 @@ export class NewsFeedContainer {
   }
 
   ngOnInit() {
-        var socket = io()
+      var socket = io((<any>window).docsDashBoardConfig.baseUrl)
 
-        socket.on('newsFeed', (newItem) => {
-          var action = this.newsFeedActions.add(newItem)
-          this.store.dispatch(action)
-        })
+      socket.on('newsFeed', (newItem) => {
+        var action = this.newsFeedActions.add(newItem)
+        this.store.dispatch(action)
+      })
   }  
 
   reloadLastFeeds() {
@@ -65,7 +65,7 @@ export class NewsFeedContainer {
       //  this.newsFeedStore = store.select('newsFeedReducer')
        
 
-//  * 	constructor(state$: Observable<AppState>) {
+//  * 	constructor(state$: Observable<AppStat_e>) {
 //  * 	  this.booksState$ = state$.let(getBooksState());
 //  * 	}
 

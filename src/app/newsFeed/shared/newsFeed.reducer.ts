@@ -51,11 +51,11 @@ export const newsFeedReducer: ActionReducer<NewsFeedsState> = (
 // how to use:
 
 //  * class MyComponent {
-//  * 	constructor(state$: Observable<AppState>) {
+//  * 	constructor(state$: Observable<AppSt_ate>) {
 //  * 	  this.booksState$ = state$.let(getFeedsState());
 //  * 	}
 
 //  export function getBooksState() {
-//   return (state$: Observable<AppState>) => state$
+//   return (state$: Observable<AppS_tate>) => state$
 //     .select(s => s.books);
 // }
